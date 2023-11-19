@@ -1,0 +1,29 @@
+{
+  "python.autoComplete.extraPaths": [
+    "/opt/ros/humble/lib/python3.10/site-packages",
+  ],
+  "python.analysis.extraPaths": [
+    "/opt/ros/humble/lib/python3.10/site-packages"
+  ],
+  "[cpp]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "zachflower.uncrustify"
+  },
+  "[xml]": {
+    "editor.autoClosingBrackets": "never"
+  },
+  "uncrustify.configPath.linux": ".vscode/uncrustify.cfg",
+  "xml.format.splitAttributes": true,
+  "editor.formatOnSave": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "files.associations": {
+    "*.repos": "yaml",
+    "*.rviz": "yaml",
+    "*.xacro": "xml",
+    "*.urdf": "xml",
+    "*.cpp": "cpp",
+    "*.hpp": "cpp"
+  },
+  "ros.distro": "humble",
+}
