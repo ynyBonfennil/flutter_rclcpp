@@ -92,9 +92,10 @@ Future<void> _ros2IsolateEntryPoint(SendPort ros2SP) async {
   var ros2RP = ReceivePort();
   ros2SP.send(ros2RP.sendPort);
 
-  flutter_rclcpp.ros2_init();
-  flutter_rclcpp.ros2_create_node("asdf");
+  flutter_rclcpp.Ros2Init();
+  flutter_rclcpp.Ros2CreateNode("asdf");
+  flutter_rclcpp.SubscribeSub();
   Timer.periodic(const Duration(milliseconds: 100), (Timer t) {
-    flutter_rclcpp.ros2_spin_some();
+    flutter_rclcpp.Ros2SpinSome();
   });
 }

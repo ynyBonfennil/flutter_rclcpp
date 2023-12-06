@@ -3,24 +3,38 @@
 MinimalPubSub::MinimalPubSub(std::string name)
 : rclcpp::Node(name)
 {
-  this->publisher_ = this->create_publisher<std_msgs::msg::String>("topic_2", 10);
-  this->subscription_ = this->create_subscription<std_msgs::msg::String>(
-    "topic",
-    10,
-    std::bind(&MinimalPubSub::onTopic, this, std::placeholders::_1));
 }
 
-void MinimalPubSub::RegisterMessageCallback(MessageCallback callback)
+void MinimalPubSub::SubscribeSub(void (* callback)(const std_msgs::msg::String &))
 {
-  this->message_callback_ = callback;
+  this->subscription_sub_ = this->create_subscription<std_msgs::msg::String>(
+    "sub",
+    rclcpp::QoS(1).reliable().durability_volatile(),
+    callback
+  );
 }
 
-void MinimalPubSub::onTopic(const std_msgs::msg::String & msg)
+void MinimalPubSub::UnsubscribeSub()
 {
-  RCLCPP_INFO(this->get_logger(), "onTopic()");
-  this->publisher_->publish(std_msgs::msg::String().set__data("asd"));
-  if (this->message_callback_) {
-    RCLCPP_INFO(this->get_logger(), "call message callback");
-    this->message_callback_(msg.data.c_str());
+  this->subscription_sub_.reset();
+}
+
+void MinimalPubSub::CreatePublisherPub()
+{
+  this->publisher_pub_ = this->create_publisher<std_msgs::msg::String>(
+    "pub",
+    rclcpp::QoS(1).reliable().durability_volatile()
+  );
+}
+
+void MinimalPubSub::PublishPub(const std_msgs::msg::String & msg)
+{
+  if (this->publisher_pub_) {
+    this->publisher_pub_->publish(msg);
   }
+}
+
+void MinimalPubSub::RemovePublisherPub()
+{
+  this->publisher_pub_.reset();
 }

@@ -26,33 +26,99 @@ class FlutterRclcppBindings {
           lookup)
       : _lookup = lookup;
 
-  void ros2_init() {
-    return _ros2_init();
+  void Ros2Init() {
+    return _Ros2Init();
   }
 
-  late final _ros2_initPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('ros2_init');
-  late final _ros2_init = _ros2_initPtr.asFunction<void Function()>();
+  late final _Ros2InitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('Ros2Init');
+  late final _Ros2Init = _Ros2InitPtr.asFunction<void Function()>();
 
-  void ros2_create_node(
+  void Ros2CreateNode(
     ffi.Pointer<ffi.Char> arg0,
   ) {
-    return _ros2_create_node(
+    return _Ros2CreateNode(
       arg0,
     );
   }
 
-  late final _ros2_create_nodePtr =
+  late final _Ros2CreateNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
-          'ros2_create_node');
-  late final _ros2_create_node =
-      _ros2_create_nodePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+          'Ros2CreateNode');
+  late final _Ros2CreateNode =
+      _Ros2CreateNodePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-  void ros2_spin_some() {
-    return _ros2_spin_some();
+  void Ros2SpinSome() {
+    return _Ros2SpinSome();
   }
 
-  late final _ros2_spin_somePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('ros2_spin_some');
-  late final _ros2_spin_some = _ros2_spin_somePtr.asFunction<void Function()>();
+  late final _Ros2SpinSomePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('Ros2SpinSome');
+  late final _Ros2SpinSome = _Ros2SpinSomePtr.asFunction<void Function()>();
+
+  void SubscribeSub(
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(dart_std_msgs_msg_string)>>
+        arg0,
+  ) {
+    return _SubscribeSub(
+      arg0,
+    );
+  }
+
+  late final _SubscribeSubPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Void Function(
+                          dart_std_msgs_msg_string)>>)>>('SubscribeSub');
+  late final _SubscribeSub = _SubscribeSubPtr.asFunction<
+      void Function(
+          ffi.Pointer<
+              ffi
+              .NativeFunction<ffi.Void Function(dart_std_msgs_msg_string)>>)>();
+
+  void UnsubscribeSub() {
+    return _UnsubscribeSub();
+  }
+
+  late final _UnsubscribeSubPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('UnsubscribeSub');
+  late final _UnsubscribeSub = _UnsubscribeSubPtr.asFunction<void Function()>();
+
+  void CreatePublisherPub() {
+    return _CreatePublisherPub();
+  }
+
+  late final _CreatePublisherPubPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('CreatePublisherPub');
+  late final _CreatePublisherPub =
+      _CreatePublisherPubPtr.asFunction<void Function()>();
+
+  void PublishPub(
+    dart_std_msgs_msg_string arg0,
+  ) {
+    return _PublishPub(
+      arg0,
+    );
+  }
+
+  late final _PublishPubPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(dart_std_msgs_msg_string)>>(
+          'PublishPub');
+  late final _PublishPub =
+      _PublishPubPtr.asFunction<void Function(dart_std_msgs_msg_string)>();
+
+  void RemovePublisherPub() {
+    return _RemovePublisherPub();
+  }
+
+  late final _RemovePublisherPubPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('RemovePublisherPub');
+  late final _RemovePublisherPub =
+      _RemovePublisherPubPtr.asFunction<void Function()>();
+}
+
+final class dart_std_msgs_msg_string extends ffi.Struct {
+  external ffi.Pointer<ffi.Char> data;
 }

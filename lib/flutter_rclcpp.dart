@@ -6,14 +6,22 @@ import 'package:ffi/ffi.dart';
 
 import 'flutter_rclcpp_bindings_generated.dart';
 
-void ros2_init() => _bindings.ros2_init();
-void ros2_create_node(String name)
+void Ros2Init() => _bindings.Ros2Init();
+void Ros2CreateNode(String name)
 {
   Pointer<Char> name_ptr = name.toNativeUtf8().cast<Char>();
-  _bindings.ros2_create_node(name_ptr);
+  _bindings.Ros2CreateNode(name_ptr);
   malloc.free(name_ptr);
 }
-void ros2_spin_some() => _bindings.ros2_spin_some();
+void Ros2SpinSome() => _bindings.Ros2SpinSome();
+
+void onSubscribeSub(dart_std_msgs_msg_string msg) {
+  print(msg.data);
+}
+
+final onSubscribeSubPtr = Pointer.fromFunction<Void Function(dart_std_msgs_msg_string)>(onSubscribeSub);
+
+void SubscribeSub() => _bindings.SubscribeSub(onSubscribeSubPtr);
 
 const String _libName = 'flutter_rclcpp';
 
