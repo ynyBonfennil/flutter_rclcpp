@@ -10,8 +10,8 @@ headers:
     - 'src/flutter_rclcpp.h'
   include-directives:
     - 'src/flutter_rclcpp.h'
-    - 'src/dart_msgs/std_msgs/msg/*'
-    - 'src/dart_msgs/builtin_interfaces/msg/*'
+    - 'src/dart_bindings/std_msgs/msg/*'
+    - 'src/dart_bindings/builtin_interfaces/msg/*'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types
