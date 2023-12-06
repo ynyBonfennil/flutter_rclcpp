@@ -7,11 +7,11 @@ extern "C"
 
 #include <stdint.h>
 
-  typedef struct
-  {
-    int32_t sec;
-    uint32_t nanosec;
-  } dart_builtin_interfaces_msg_time;
+typedef struct
+{
+  int32_t sec;
+  uint32_t nanosec;
+} dart_builtin_interfaces_msg_time;
 
 #ifdef __cplusplus
 }

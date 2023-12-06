@@ -1,7 +1,7 @@
 #include "minimal_pub_sub.hpp"
 
 MinimalPubSub::MinimalPubSub()
-: rclcpp::Node("minimal_pub_sub")
+: rclcpp::Node("flutter")
 {
   this->publisher_ = this->create_publisher<std_msgs::msg::String>("topic_2", 10);
   this->subscription_ = this->create_subscription<std_msgs::msg::String>(

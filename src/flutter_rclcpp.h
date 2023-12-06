@@ -5,24 +5,14 @@ extern "C"
 {
 #endif
 
-#if _WIN32
-#include <windows.h>
-#else
-#include <pthread.h>
-#include <unistd.h>
-#endif
+void rcl_init();
+void rcl_spin_some();
 
-#if _WIN32
-#define FFI_PLUGIN_EXPORT __declspec(dllexport)
-#else
-#define FFI_PLUGIN_EXPORT
-#endif
+void create_node();
+void spin_some();
 
-  FFI_PLUGIN_EXPORT void create_node();
-  FFI_PLUGIN_EXPORT void spin_some();
-
-  typedef void (*MessageCallback)(const char *);
-  FFI_PLUGIN_EXPORT void register_subscription_callback(MessageCallback callback);
+typedef void (* MessageCallback)(const char *);
+void register_subscription_callback(MessageCallback callback);
 
 #ifdef __cplusplus
 }
