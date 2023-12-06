@@ -7,9 +7,9 @@ description: |
 output: 'lib/flutter_rclcpp_bindings_generated.dart'
 headers:
   entry-points:
-    - 'src/flutter_rclcpp.h'
+    - 'src/ros2_main.h'
   include-directives:
-    - 'src/flutter_rclcpp.h'
+    - 'src/ros2_main.h'
     - 'src/dart_bindings/std_msgs/msg/*'
     - 'src/dart_bindings/builtin_interfaces/msg/*'
 preamble: |

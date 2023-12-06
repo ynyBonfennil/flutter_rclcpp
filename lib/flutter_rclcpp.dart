@@ -2,13 +2,18 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
+import 'package:ffi/ffi.dart';
 
 import 'flutter_rclcpp_bindings_generated.dart';
 
-void create_node() => _bindings.create_node();
-void spin_some() => _bindings.spin_some();
-void register_subscription_callback(MessageCallback) =>
-    _bindings.register_subscription_callback(MessageCallback);
+void ros2_init() => _bindings.ros2_init();
+void ros2_create_node(String name)
+{
+  Pointer<Char> name_ptr = name.toNativeUtf8().cast<Char>();
+  _bindings.ros2_create_node(name_ptr);
+  malloc.free(name_ptr);
+}
+void ros2_spin_some() => _bindings.ros2_spin_some();
 
 const String _libName = 'flutter_rclcpp';
 

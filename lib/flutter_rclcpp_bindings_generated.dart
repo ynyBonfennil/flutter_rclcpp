@@ -26,37 +26,33 @@ class FlutterRclcppBindings {
           lookup)
       : _lookup = lookup;
 
-  void create_node() {
-    return _create_node();
+  void ros2_init() {
+    return _ros2_init();
   }
 
-  late final _create_nodePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('create_node');
-  late final _create_node = _create_nodePtr.asFunction<void Function()>();
+  late final _ros2_initPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('ros2_init');
+  late final _ros2_init = _ros2_initPtr.asFunction<void Function()>();
 
-  void spin_some() {
-    return _spin_some();
-  }
-
-  late final _spin_somePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('spin_some');
-  late final _spin_some = _spin_somePtr.asFunction<void Function()>();
-
-  void register_subscription_callback(
-    MessageCallback callback,
+  void ros2_create_node(
+    ffi.Pointer<ffi.Char> arg0,
   ) {
-    return _register_subscription_callback(
-      callback,
+    return _ros2_create_node(
+      arg0,
     );
   }
 
-  late final _register_subscription_callbackPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(MessageCallback)>>(
-          'register_subscription_callback');
-  late final _register_subscription_callback =
-      _register_subscription_callbackPtr
-          .asFunction<void Function(MessageCallback)>();
-}
+  late final _ros2_create_nodePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'ros2_create_node');
+  late final _ros2_create_node =
+      _ros2_create_nodePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-typedef MessageCallback
-    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>;
+  void ros2_spin_some() {
+    return _ros2_spin_some();
+  }
+
+  late final _ros2_spin_somePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('ros2_spin_some');
+  late final _ros2_spin_some = _ros2_spin_somePtr.asFunction<void Function()>();
+}

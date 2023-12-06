@@ -14,7 +14,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 add_library(flutter_rclcpp SHARED
-  "flutter_rclcpp.cpp"
+  "ros2_main.cpp"
   "minimal_pub_sub.cpp"
 )
 ament_target_dependencies(flutter_rclcpp rclcpp std_msgs)

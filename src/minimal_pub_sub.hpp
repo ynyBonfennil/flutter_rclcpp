@@ -15,7 +15,7 @@ private:
   MessageCallback message_callback_ = nullptr;
 
 public:
-  MinimalPubSub();
+  MinimalPubSub(std::string);
   void RegisterMessageCallback(MessageCallback callback);
 
 private:
