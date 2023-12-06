@@ -1,7 +1,8 @@
 #pragma once
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #include <stdint.h>
@@ -21,25 +22,25 @@ extern "C" {
 #define FFI_PLUGIN_EXPORT
 #endif
 
-FFI_PLUGIN_EXPORT void create_node();
-FFI_PLUGIN_EXPORT void spin_some();
+  FFI_PLUGIN_EXPORT void create_node();
+  FFI_PLUGIN_EXPORT void spin_some();
 
-typedef void (* MessageCallback)(const char *);
-FFI_PLUGIN_EXPORT void register_subscription_callback(MessageCallback callback);
+  typedef void (*MessageCallback)(const char *);
+  FFI_PLUGIN_EXPORT void register_subscription_callback(MessageCallback callback);
 
-// A very short-lived native function.
-//
-// For very short-lived functions, it is fine to call them on the main isolate.
-// They will block the Dart execution while running the native function, so
-// only do this for native functions which are guaranteed to be short-lived.
-FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b);
+  // A very short-lived native function.
+  //
+  // For very short-lived functions, it is fine to call them on the main isolate.
+  // They will block the Dart execution while running the native function, so
+  // only do this for native functions which are guaranteed to be short-lived.
+  FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b);
 
-// A longer lived native function, which occupies the thread calling it.
-//
-// Do not call these kind of native functions in the main isolate. They will
-// block Dart execution. This will cause dropped frames in Flutter applications.
-// Instead, call these native functions on a separate isolate.
-FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b);
+  // A longer lived native function, which occupies the thread calling it.
+  //
+  // Do not call these kind of native functions in the main isolate. They will
+  // block Dart execution. This will cause dropped frames in Flutter applications.
+  // Instead, call these native functions on a separate isolate.
+  FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b);
 
 #ifdef __cplusplus
 }
